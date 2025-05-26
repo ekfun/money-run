@@ -4,14 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Money Run Unblocked (Fake)</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: black;
+            color: white;
+            font-family: Verdana, sans-serif;
+            text-align: center;
+            user-select: none; /* Prevent text selection */
+        }
+        h1 {
+            cursor: default; /* No pointer cursor */
+        }
+    </style>
 </head>
 <body>
-    <div class="volume-control">
-        <h1 style="font-family:verdana">🔊 Volume Up To start game (audio required)</h1>
-        <audio id="song" src="crab-rave.mp3" preload="auto"></audio>
-    </div>
+    <h1>🔊 Press VOLUME UP to start (Sound Required)</h1>
+    <audio id="song" src="crab-rave.mp3" preload="auto"></audio>
 
-    <script src="script.js"></script>
+    <script>
+        const song = document.getElementById('song');
+        
+        // ONLY responds to VOLUME UP key (keyCode 175 or "AudioVolumeUp")
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "AudioVolumeUp" || e.keyCode === 175) {
+                e.preventDefault(); // Stop actual volume change
+                
+                if (song.paused) {
+                    song.play()
+                        .then(() => {
+                            document.querySelector('h1').textContent = "🔊 Game Started!";
+                        })
+                        .catch(err => {
+                            document.querySelector('h1').textContent = "Game is Starting...";
+                        });
+                } else {
+                    song.volume = Math.min(song.volume + 0.1, 1); // Increase volume if already playing
+                }
+            }
+        });
+    </script>
 </body>
 </html>
