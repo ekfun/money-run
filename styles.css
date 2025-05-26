@@ -4,31 +4,23 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f0f0f0;
-    font-family: Arial, sans-serif;
-}
-
-.volume-control {
+    background-color: #000;
+    color: #fff;
     text-align: center;
 }
 
-.volume-btn {
-    padding: 15px 30px;
-    font-size: 18px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 50px;
+#volumeText {
     cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s;
+    transition: all 0.2s;
+    padding: 20px;
+    border-radius: 10px;
 }
 
-.volume-btn:hover {
-    background-color: #45a049;
+#volumeText:hover {
+    background-color: #222;
     transform: scale(1.05);
 }
 
-.volume-btn:active {
+#volumeText:active {
     transform: scale(0.95);
 }
